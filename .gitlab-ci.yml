@@ -1,0 +1,43 @@
+include:
+- project: devops/ci-templates
+  file: ci-rules-template.yml
+
+stages:
+- tests
+
+
+variables:
+  PIP_CACHE_DIR: $CI_PROJECT_DIR/.cache/pip
+
+default:
+  cache:
+    paths:
+    - .cache/pip
+  tags:
+  - kube
+
+.prepare_tests: &PREPARE_TESTS
+  image: python:3.12.2-slim
+  before_script:
+  - apt update && apt install --no-install-recommends -y git
+  - pip install .[tests]
+
+### ==================================================================
+### Tests
+### ==================================================================
+
+unit-test:
+  <<: *PREPARE_TESTS
+  stage: tests
+  script:
+  - python -m pytest -c ./tests/pytest-config.ini --failed-first --tb=long --showlocals ./tests/unit
+  artifacts:
+    when: always
+    expose_as: tests
+    paths:
+    - report.xml
+    reports:
+      junit:
+      - report.xml
+  rules:
+  - if: $CI_PIPELINE_SOURCE == "merge_request_event"

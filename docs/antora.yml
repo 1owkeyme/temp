@@ -1,0 +1,5 @@
+name: template
+title: Template - in-House template
+version: 24.50.01
+nav:
+  - modules/ROOT/nav.adoc

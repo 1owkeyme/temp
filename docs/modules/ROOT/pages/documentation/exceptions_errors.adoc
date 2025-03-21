@@ -1,0 +1,6 @@
+= Описание ошибок в exceptions
+
+[glossary]
+
+[[Error-04c267a2-e6eb-4afe-82e4-75c12703029a]]<<Error-04c267a2-e6eb-4afe-82e4-75c12703029a, 04c267a2-e6eb-4afe-82e4-75c12703029a>>::
+Описание ошибки, возможно ссылки на статьи, best practice, RFC

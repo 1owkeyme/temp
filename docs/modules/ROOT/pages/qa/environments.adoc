@@ -1,0 +1,9 @@
+= Стенды [[environments]]
+
+== Develop
+
+
+== Staging
+
+
+== Production

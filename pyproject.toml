@@ -1,0 +1,55 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools >= 75.5"]
+
+[project]
+authors = [
+  {name = "m.bahov"}
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent"
+]
+dependencies = [
+  "pydantic==2.*",
+  "pydantic-settings==2.2.1",
+  "orjson==3.9.15",
+  "python-cqrs[kafka]==2.5.1",
+  "fastapi_app[all]@git+https://gitlab-ci-token:glpat-QETcL_wGJg8cbgSG2K6e@gitlab.timeweb.net/finance/libs/fastapi-app.git@v24.31.01",
+  "faststream[kafka]==0.5.28"
+]
+name = "billing_edm"
+requires-python = ">= 3.12"
+version = "25.09.01"
+
+[project.optional-dependencies]
+git = [
+  "pycln==2.5.0",
+  "pre-commit==3.7.1",
+  "jq==1.7.0"
+]
+lint = [
+  "pyright==1.1.377",
+  "ruff==0.6.2"
+]
+migrations = [
+  "alembic==1.14.0"
+]
+tests = [
+  "pytest~=7.4.2",
+  "pytest-env==0.6.2",
+  "pytest-asyncio~=0.21.1",
+  "pytest-cov==4.1.0",
+  "Faker==21.0.0",
+  "freezegun==1.5.1"
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+# change the default line length number or characters.
+line-length = 120
